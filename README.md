@@ -25,9 +25,11 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 Build for production mode
 
-### Updating `.env` file
+## Updating `.env` file
 
 When you run `yarn start` or `npm start`, it will automatically create a .env file from `/deploy/dotenv`. Replace the `REACT_APP_MAP_API_KEY` with the developer key from MapQuest.
+
+Note: Mapquest has a transaction limit quota for free subscription.
 
 ## Screenshots
 
