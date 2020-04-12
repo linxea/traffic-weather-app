@@ -1,0 +1,8 @@
+.Dropdown-control {
+  border: none;
+  border: 1px solid black;
+}
+
+.Dropdown-menu {
+  max-height: 400px;
+}
