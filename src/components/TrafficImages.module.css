@@ -1,0 +1,6 @@
+.trafficImage {
+  width: 500px;
+  height: 380px;
+  padding: 10px;
+  object-fit: cover;
+}
