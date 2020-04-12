@@ -34,6 +34,7 @@
   min-height: 200px;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .loading {
