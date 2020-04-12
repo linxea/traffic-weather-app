@@ -1,3 +1,7 @@
 .weather {
   flex: 1;
 }
+
+.placeholder {
+  color: #aaaaaa;
+}
