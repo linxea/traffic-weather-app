@@ -11,7 +11,6 @@ This app displays traffic images and the nearby weather forecast from selected d
 ## Features
 
 - User can select specified date, time and location to see traffic images and weather.
-- The coordinates mapping is cached in session storage with the assumption that location coordinates from the Data.gov.sg will not changed within the session. This reduces multiple calls to endpoint for the same set of coordinates. To cater for new cameras or changes in the coordinates, session storage is chosen. It could be extended to local storage with expiry date.
 
 ## Setting up the project
 

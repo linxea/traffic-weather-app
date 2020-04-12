@@ -14,10 +14,6 @@ import {
   getCoordinatesList,
   getLocationNameMapping,
 } from "../utils/coordinateUtil";
-import {
-  setCoordinatesToLocationNameMappingFromSessionStorage,
-  getCoordinatesToLocationNameMappingFromSessionStorage,
-} from "../storage/session";
 import "react-datepicker/dist/react-datepicker.css";
 import "react-dropdown/style.css";
 import style from "./App.module.css";
@@ -29,12 +25,8 @@ async function getParsedLocationNameMapping(selectedDate, selectedTime) {
 
   const coordinatesList = getCoordinatesList(trafficData);
 
-  let locationNameList = getCoordinatesToLocationNameMappingFromSessionStorage();
-  if (locationNameList.length === 0) {
-    const { results } = await getLocationNamesFromCoordinates(coordinatesList);
-    setCoordinatesToLocationNameMappingFromSessionStorage(results);
-    locationNameList = results;
-  }
+  const { results } = await getLocationNamesFromCoordinates(coordinatesList);
+  const locationNameList = results;
 
   const locationNameMapping = getLocationNameMapping(
     trafficData,
