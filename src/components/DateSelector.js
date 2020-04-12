@@ -4,6 +4,7 @@ import style from "./Selector.module.css";
 
 const DateSelector = ({ selectedDate, setSelectedDate }) => (
   <DatePicker
+    dateFormat="dd/MM/yyyy"
     className={style.inputStyle}
     selected={selectedDate}
     onChange={setSelectedDate}
