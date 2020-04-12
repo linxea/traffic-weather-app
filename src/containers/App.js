@@ -115,6 +115,7 @@ const App = () => {
         ) : (
           <TrafficImages
             images={locationNameMapping[selectedLocation]?.images}
+            location={selectedLocation}
           />
         )}
         {isError && <h2>There is an error, please try again later. :(</h2>}

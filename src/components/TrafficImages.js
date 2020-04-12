@@ -1,14 +1,14 @@
 import React from "react";
 import style from "./TrafficImages.module.css";
 
-const TrafficImages = ({ images }) => (
+const TrafficImages = ({ images, location }) => (
   <>
     {images ? (
       images.map((image) => (
         <img
           className={style.trafficImage}
           key={image.id}
-          alt="traffic"
+          alt={location}
           src={image.imageUrl}
         />
       ))
