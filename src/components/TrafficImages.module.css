@@ -1,6 +1,8 @@
 .trafficImage {
-  width: 500px;
-  height: 380px;
-  padding: 10px;
+  width: 100%;
+  max-width: 480px;
+  height: 360px;
+  margin: 10px;
   object-fit: cover;
+  background-color: #f9f9f9;
 }

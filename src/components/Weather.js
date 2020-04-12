@@ -9,9 +9,7 @@ const Weather = ({ weather }) => {
   }
 
   return (
-    <h1 className={weatherStyle.join(" ")}>
-      {weather ? weather : "Weather Forecast"}
-    </h1>
+    <h2 className={weatherStyle.join(" ")}>{weather ? weather : "Weather"}</h2>
   );
 };
 
