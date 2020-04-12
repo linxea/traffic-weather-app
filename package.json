@@ -13,10 +13,11 @@
     "react-scripts": "3.4.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "npm run copy:dotenv && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "copy:dotenv": "cp deploy/dotenv .env"
   },
   "eslintConfig": {
     "extends": "react-app"

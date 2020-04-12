@@ -79,6 +79,16 @@ const App = () => {
     setSelectedLocation(event.value);
   };
 
+  const ErrorMessage = <h2>There is an error, please try again later. :(</h2>;
+  const TrafficContent = isLoading ? (
+    <div className={style.loading}></div>
+  ) : (
+    <TrafficImages
+      images={locationNameMapping[selectedLocation]?.images}
+      location={selectedLocation}
+    />
+  );
+
   return (
     <div className={style.app}>
       <div className={style.row}>
@@ -102,15 +112,7 @@ const App = () => {
         />
       </div>
       <div className={style.trafficContainer}>
-        {isLoading ? (
-          <div className={style.loading}></div>
-        ) : (
-          <TrafficImages
-            images={locationNameMapping[selectedLocation]?.images}
-            location={selectedLocation}
-          />
-        )}
-        {isError && <h2>There is an error, please try again later. :(</h2>}
+        {isError ? ErrorMessage : TrafficContent}
       </div>
     </div>
   );

@@ -3,7 +3,7 @@ import { getDateAndTimeFormat } from "../utils/util";
 
 const DATA_API_URL = "https://api.data.gov.sg/v1/";
 const MAP_API_URL = "https://www.mapquestapi.com/geocoding/v1/batch";
-const MAP_API_KEY = "GhmKAs0ozEImsYnrApg0hG3krGG48SRV";
+const MAP_API_KEY = process.env.REACT_APP_MAP_API_KEY;
 
 export async function getLocationNamesFromCoordinates(coordinates) {
   const payload = {
