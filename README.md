@@ -24,3 +24,8 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 ### `yarn build`
 
 Build for production mode
+
+## Screenshots
+
+![web](./screenshots/web.png)
+![mobile](./screenshots/mobile.png)
