@@ -16,14 +16,18 @@ This app displays traffic images and the nearby weather forecast from selected d
 
 In the project directory, you can run:
 
-### `yarn start`
+### `yarn start` or `npm start`
 
 Runs the app in the development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-### `yarn build`
+### `yarn build` or `npm run build`
 
 Build for production mode
+
+### Updating `.env` file
+
+When you run `yarn start` or `npm start`, it will automatically create a .env file from `/deploy/dotenv`. Replace the `REACT_APP_MAP_API_KEY` with the developer key from MapQuest.
 
 ## Screenshots
 
