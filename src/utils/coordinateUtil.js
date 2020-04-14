@@ -1,23 +1,57 @@
+/**
+ * Convert the array of traffic camera coordinates to the format
+ * required by Mapquest Batch API.
+ *
+ * @param {object} trafficData
+ */
 export function getCoordinatesList(trafficData) {
-  let coordinatesList = [];
-
-  if (trafficData?.items?.[0]?.cameras) {
-    coordinatesList = trafficData?.items?.[0]?.cameras.reduce(
-      (list, camera) => {
-        const { latitude, longitude } = camera.location;
-        const coordinateObject = {
-          latLng: { lat: latitude, lng: longitude },
-        };
-
-        return [...list, coordinateObject];
-      },
-      []
-    );
+  if (!trafficData?.items?.[0]?.cameras) {
+    return [];
   }
+
+  const coordinatesList = trafficData?.items?.[0]?.cameras.reduce(
+    (list, camera) => {
+      const { latitude, longitude } = camera.location;
+      const coordinateObject = {
+        latLng: { lat: latitude, lng: longitude },
+      };
+
+      return [...list, coordinateObject];
+    },
+    []
+  );
 
   return coordinatesList;
 }
 
+/**
+ * Return an object of location name mapped to location coordinates,
+ * array of images and weather information. locationNameList is a list
+ * of location names following the order of data from trafficData. The
+ * nearest weather is then mapped to the location name.
+ *
+ * const locationNameMapping = {
+ *   ...
+ *   "Braddell Flyover": {
+ *      "latitude": 1.34355015,
+ *      "longitude": 103.8601984,
+ *      "images": [
+ *        {
+ *          "imageUrl": "https://images...jpg",
+ *          "id": "1702"
+ *        }
+ *      ],
+ *      "weather": {
+ *        "area": "Toa Payoh",
+ *        "forecast": "Fair (Night)"
+ *      }
+ *   ...
+ * }
+ *
+ * @param {object} trafficData
+ * @param {object} weatherData
+ * @param {object} locationNameList
+ */
 export function getLocationNameMapping(
   trafficData,
   weatherData,
@@ -50,7 +84,7 @@ export function getLocationNameMapping(
             ],
           };
 
-          // Find nearest weather
+          // Find nearest weather using manhattan distance
           if (weatherData?.area_metadata) {
             let minDiff = 1;
             let nearestWeather = "";

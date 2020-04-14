@@ -6,41 +6,13 @@ import Weather from "../components/Weather";
 import ErrorMessage from "../components/ErrorMessage";
 import TrafficContainer from "../components/TrafficContainer";
 import Row from "../hoc/Row";
-import { getSortedArray } from "../utils/util";
-import {
-  getLocationNamesFromCoordinates,
-  getWeatherData,
-  getTrafficData,
-} from "../api/api";
-import {
-  getCoordinatesList,
-  getLocationNameMapping,
-} from "../utils/coordinateUtil";
+import { getParsedLocationNameMapping } from "../api/ApiHelper";
 import "react-datepicker/dist/react-datepicker.css";
 import "react-dropdown/style.css";
 import style from "./App.module.css";
 import "./Dropdown.css";
 
 const API_ERROR_MESSAGE = "There is an error, please try again later. :(";
-async function getParsedLocationNameMapping(selectedDate, selectedTime) {
-  const weatherData = await getWeatherData(selectedDate, selectedTime);
-  const trafficData = await getTrafficData(selectedDate, selectedTime);
-
-  const coordinatesList = getCoordinatesList(trafficData);
-
-  const { results } = await getLocationNamesFromCoordinates(coordinatesList);
-  const locationNameList = results;
-
-  const locationNameMapping = getLocationNameMapping(
-    trafficData,
-    weatherData,
-    locationNameList
-  );
-
-  const availableLocations = getSortedArray(Object.keys(locationNameMapping));
-
-  return { availableLocations, locationNameMapping };
-}
 
 const App = () => {
   const [isLoading, setLoading] = useState(false);
@@ -76,7 +48,7 @@ const App = () => {
   useEffect(() => {
     const currentLocation = selectedLocation || locations[0];
     setSelectedLocation(currentLocation);
-  }, [locationNameMapping, locations, selectedLocation]);
+  }, [locations, selectedLocation]);
 
   const handleLocationChange = (event) => {
     setSelectedLocation(event.value);
