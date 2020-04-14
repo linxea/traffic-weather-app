@@ -3,7 +3,9 @@ import DateSelector from "../components/DateSelector";
 import TimeSelector from "../components/TimeSelector";
 import LocationSelector from "../components/LocationSelector";
 import Weather from "../components/Weather";
-import TrafficImages from "../components/TrafficImages";
+import ErrorMessage from "../components/ErrorMessage";
+import TrafficContainer from "../components/TrafficContainer";
+import Row from "../hoc/Row";
 import { getSortedArray } from "../utils/util";
 import {
   getLocationNamesFromCoordinates,
@@ -19,6 +21,7 @@ import "react-dropdown/style.css";
 import style from "./App.module.css";
 import "./Dropdown.css";
 
+const API_ERROR_MESSAGE = "There is an error, please try again later. :(";
 async function getParsedLocationNameMapping(selectedDate, selectedTime) {
   const weatherData = await getWeatherData(selectedDate, selectedTime);
   const trafficData = await getTrafficData(selectedDate, selectedTime);
@@ -79,19 +82,9 @@ const App = () => {
     setSelectedLocation(event.value);
   };
 
-  const ErrorMessage = <h2>There is an error, please try again later. :(</h2>;
-  const TrafficContent = isLoading ? (
-    <div className={style.loading}></div>
-  ) : (
-    <TrafficImages
-      images={locationNameMapping[selectedLocation]?.images}
-      location={selectedLocation}
-    />
-  );
-
   return (
-    <div className={style.app}>
-      <div className={style.row}>
+    <div className={style.mainContainer}>
+      <Row>
         <DateSelector
           selectedDate={selectedDate}
           setSelectedDate={setSelectedDate}
@@ -100,8 +93,8 @@ const App = () => {
           selectedTime={selectedTime}
           setSelectedTime={setSelectedTime}
         />
-      </div>
-      <div className={style.row}>
+      </Row>
+      <Row>
         <LocationSelector
           selectedLocation={selectedLocation}
           locations={locations}
@@ -110,9 +103,17 @@ const App = () => {
         <Weather
           weather={locationNameMapping[selectedLocation]?.weather?.forecast}
         />
-      </div>
-      <div className={style.trafficContainer}>
-        {isError ? ErrorMessage : TrafficContent}
+      </Row>
+      <div className={style.contentContainer}>
+        {isError ? (
+          <ErrorMessage text={API_ERROR_MESSAGE} />
+        ) : (
+          <TrafficContainer
+            isLoading={isLoading}
+            locationNameMapping={locationNameMapping}
+            selectedLocation={selectedLocation}
+          />
+        )}
       </div>
     </div>
   );

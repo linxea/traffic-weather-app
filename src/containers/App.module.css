@@ -1,4 +1,4 @@
-.app {
+.mainContainer {
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -10,24 +10,13 @@
   margin: 0 auto;
 }
 
-.row {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-}
-
 @media (min-width: 1000px) {
-  .row {
-    flex-direction: row;
-  }
-
-  .app {
+  .mainContainer {
     padding-top: 150px;
   }
 }
 
-.trafficContainer {
+.contentContainer {
   display: flex;
   width: 100%;
   max-width: 1000px;
@@ -35,26 +24,4 @@
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-}
-
-.loading {
-  display: inline-block;
-  width: 100px;
-  height: 100px;
-  border: 10px solid rgba(66, 66, 66, 0.2);
-  border-radius: 50%;
-  border-top-color: #aaaaaa;
-  animation: spin 1s ease-in-out infinite;
-  -webkit-animation: spin 1s ease-in-out infinite;
-}
-
-@keyframes spin {
-  to {
-    -webkit-transform: rotate(360deg);
-  }
-}
-@-webkit-keyframes spin {
-  to {
-    -webkit-transform: rotate(360deg);
-  }
 }
