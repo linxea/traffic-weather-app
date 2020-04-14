@@ -1,6 +1,6 @@
 import { get, post } from "../utils/fetchUtil";
 import { getDateAndTimeFormat } from "../utils/util";
-import { getSortedArray } from "../utils/util";
+import { getAlphabeticallySortedArray } from "../utils/util";
 import {
   getCoordinatesList,
   getLocationNameMapping,
@@ -88,7 +88,9 @@ export async function getParsedLocationNameMapping(selectedDate, selectedTime) {
     locationNameList
   );
 
-  const availableLocations = getSortedArray(Object.keys(locationNameMapping));
+  const availableLocations = getAlphabeticallySortedArray(
+    Object.keys(locationNameMapping)
+  );
 
   return { availableLocations, locationNameMapping };
 }
