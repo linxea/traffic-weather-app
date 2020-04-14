@@ -11,6 +11,12 @@ This app displays traffic images and the nearby weather forecast from selected d
 ## Features
 
 - User can select specified date, time and location to see traffic images and weather.
+- The nearest weather is mapped to the location using manhattan distance.
+
+## Assumptions
+
+- Traffic data returns different number of cameras at different timing, thus it is difficult to cache location mapping in the client side to prevent multiple calls to Geocoding API.
+- The difference between Manhattan distance and Euclidean distance is negligible and that manhattan distance is accurate for the current use case.
 
 ## Setting up the project
 
