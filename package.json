@@ -10,7 +10,7 @@
     "react-datepicker": "^2.14.1",
     "react-dom": "^16.13.1",
     "react-dropdown": "^1.7.0",
-    "react-scripts": "3.4.1"
+    "react-scripts": "5.0.1"
   },
   "scripts": {
     "start": "npm run copy:dotenv && react-scripts start",
